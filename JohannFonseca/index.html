@@ -2,80 +2,67 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SPLIT/XLM — Liquidación P2P de Cuentas Compartidas en Stellar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>La Cuenta — Dividí y cobrá al instante sin bancos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <div class="grid-backdrop"></div>
-
-    <!-- TOPBAR -->
+    <!-- BARRA SUPERIOR -->
     <header class="topbar">
       <div class="topbar-inner">
         <div class="brand">
-          <div class="brand-mark">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
-          </div>
+          <div class="brand-stamp">LC</div>
           <div class="brand-meta">
-            <div class="brand-row">
-              <span class="brand-title">SPLIT<span class="accent-slash">/</span>XLM</span>
-              <span class="net-tag">TESTNET · HORIZON</span>
-            </div>
-            <span class="brand-subtitle">P2P Bill Settlement Protocol · Johann Fonseca</span>
+            <span class="brand-title">La Cuenta<span class="red-dot">.</span></span>
+            <span class="brand-subtitle">Pagaste vos, cobrales en un toque</span>
           </div>
         </div>
 
-        <!-- SECCION DE CONEXION DE WALLET STELLAR -->
+        <!-- CONEXION DE BILLETERA STELLAR -->
         <div class="wallet-bar" id="wallet-section">
           <div id="wallet-disconnected" class="wallet-actions">
             <button id="btn-connect-freighter" class="btn btn-primary">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                <rect x="2" y="5" width="20" height="14" rx="2" />
-                <path d="M16 12h.01" />
-              </svg>
-              <span>Conectar Freighter</span>
+              Conectar Freighter
             </button>
             <button
               id="btn-connect-instant"
               class="btn btn-secondary"
-              title="Genera y fondea una llave de Stellar Testnet en el navegador para pruebas rápidas"
+              title="Activa una billetera lista para usar desde el celular o navegador"
             >
-              <span>Nodo Testnet Instantáneo</span>
+              Billetera Rápida (Móvil / Web)
             </button>
           </div>
 
           <div id="wallet-connected" class="wallet-connected hidden">
             <div class="wallet-pill">
               <span class="status-dot"></span>
-              <span id="wallet-mode-label" class="wallet-mode">FREIGHTER</span>
+              <span id="wallet-mode-label" class="wallet-mode">ACTIVA</span>
               <code id="wallet-address-short" class="wallet-addr">G...</code>
-              <button id="btn-copy-address" class="icon-btn" title="Copiar llave pública">
-                COPIAR
+              <button id="btn-copy-address" class="icon-btn" title="Copiar dirección">
+                Copiar
               </button>
             </div>
             <div class="balance-pill">
               <span id="wallet-balance" class="font-num">0.00 XLM</span>
               <button
                 id="btn-fund-friendbot"
-                class="btn btn-xs btn-crimson-outline"
-                title="Solicitar +10,000 XLM de prueba a Friendbot"
+                class="btn btn-xs btn-red-outline"
+                title="Recargar saldo de prueba (+10,000 XLM)"
               >
-                + FRIENDBOT
+                + Recargar
               </button>
-              <button id="btn-refresh-balance" class="icon-btn" title="Sincronizar con Horizon">
-                SYNC
+              <button id="btn-refresh-balance" class="icon-btn" title="Actualizar saldo">
+                Actualizar
               </button>
             </div>
             <button id="btn-disconnect-wallet" class="btn btn-ghost btn-xs">
-              DESCONECTAR
+              Salir
             </button>
           </div>
         </div>
@@ -83,59 +70,54 @@
     </header>
 
     <main class="container">
-      <!-- HEADER / COCKPIT BAR -->
-      <section class="cockpit-header">
-        <div class="cockpit-text">
-          <div class="eyebrow-row">
-            <span class="pulse-dot"></span>
-            <span class="eyebrow">STELLAR RAVEN MCP · SEP-0007 SETTLEMENT</span>
-          </div>
-          <h1>División de cuentas y liquidación directa por enlace</h1>
+      <!-- ENCABEZADO EDITORIAL -->
+      <section class="editorial-hero">
+        <div class="hero-copy">
+          <span class="kicker">DIVISOR DE GASTOS ENTRE COMPAS</span>
+          <h1>¿Quién pagó la mesa hoy?</h1>
           <p>
-            Genera órdenes de cobro fraccionadas con <code>MEMO_TEXT</code> único por participante.
-            Tus amigos abren el enlace, firman la transacción en Stellar y el ledger marca el pago
-            en tiempo real sin pasar por bancos.
+            Armá el tiquete de la salida, repartí la cuenta en partes iguales y mandale a cada
+            compa su link por WhatsApp. Ellos abren el link en el celular, tocan
+            <strong>Pagar mi parte</strong> y la plata te cae directo.
           </p>
         </div>
 
-        <nav class="mode-switcher" aria-label="Modo de operación">
+        <nav class="mode-switcher" aria-label="Cambiar vista">
           <button id="tab-host-mode" class="tab-btn active">
-            <span class="tab-index">01</span>
-            <span>EMITIR COBRO (HOST)</span>
+            Armar La Cuenta
           </button>
           <button id="tab-payer-mode" class="tab-btn">
-            <span class="tab-index">02</span>
-            <span>LIQUIDAR ORDEN (PAGADOR)</span>
+            Tiquete del Compa
           </button>
         </nav>
       </section>
 
-      <!-- BANNER DE ESTADO -->
+      <!-- BANNER DE AVISOS -->
       <div id="status-banner" class="status-banner hidden"></div>
 
-      <!-- VISTA 1: HOST (DIVIDIR CUENTA) -->
+      <!-- VISTA 1: ARMAR LA CUENTA -->
       <section id="view-host" class="grid-layout">
-        <!-- Panel Izquierdo: Configuracion de la Orden -->
+        <!-- Columna Izquierda: Armar el Tiquete -->
         <div class="card">
           <div class="card-header">
             <div>
-              <span class="section-tag">PARÁMETROS DE LA ORDEN</span>
-              <h2>Configurar Cuenta Compartida</h2>
+              <span class="section-tag">PASO 01 · EL TIQUETE</span>
+              <h2>¿Qué salieron a comer o hacer?</h2>
             </div>
             <div class="preset-group">
-              <button type="button" class="chip" data-preset="0">Pizza Squad</button>
-              <button type="button" class="chip" data-preset="1">Café Hackathon</button>
-              <button type="button" class="chip" data-preset="2">Transporte Chirripó</button>
+              <button type="button" class="chip" data-preset="0">Pizza & Birras</button>
+              <button type="button" class="chip" data-preset="1">Café & Empanadas</button>
+              <button type="button" class="chip" data-preset="2">Viaje a Chirripó</button>
             </div>
           </div>
 
           <form id="form-create-split" class="split-form">
             <div class="form-group">
-              <label for="input-bill-title">CONCEPTO / REFERENCIA</label>
+              <label for="input-bill-title">Lugar o plan</label>
               <input
                 type="text"
                 id="input-bill-title"
-                placeholder="Ej. Cena Squad Pura Vida"
+                placeholder="Ej. Pizza & Birras del viernes"
                 value="Pizza & Birras con el Squad"
                 required
               />
@@ -143,7 +125,7 @@
 
             <div class="form-row">
               <div class="form-group">
-                <label for="input-bill-total">MONTO TOTAL (XLM)</label>
+                <label for="input-bill-total">Total de la factura (XLM)</label>
                 <input
                   type="number"
                   id="input-bill-total"
@@ -158,7 +140,7 @@
               <div class="form-group checkbox-group">
                 <label class="checkbox-label">
                   <input type="checkbox" id="input-include-me" checked />
-                  <span>Incluirme en la división</span>
+                  <span>Contarme a mí en la división</span>
                 </label>
                 <div class="hint font-num" id="live-math-preview">
                   4 personas → 25.00 XLM c/u
@@ -167,61 +149,59 @@
             </div>
 
             <div class="form-group">
-              <label for="input-friend-name">PARTICIPANTES A COBRAR</label>
+              <label for="input-friend-name">¿Quiénes estaban en la mesa?</label>
               <div class="add-friend-row">
                 <input
                   type="text"
                   id="input-friend-name"
-                  placeholder="Nombre o alias (ej. Kevin)"
+                  placeholder="Nombre del compa (ej. Kevin)"
                 />
                 <button type="button" id="btn-add-friend" class="btn btn-secondary">
-                  + AGREGAR
+                  + Sumar a la mesa
                 </button>
               </div>
               <div id="friends-tags-list" class="tags-container"></div>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block btn-lg">
-              <span>GENERAR ENLACES DE LIQUIDACIÓN</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
+              Sacar Tiquetes y Links de Cobro
             </button>
           </form>
         </div>
 
-        <!-- Panel Derecho: Enlaces y Estado On-Chain -->
+        <!-- Columna Derecha: Tiquetes por Compa -->
         <div class="card">
           <div class="card-header">
             <div>
-              <span class="section-tag">MONITOR HORIZON TESTNET</span>
-              <h2>Órdenes Individuales & Estado On-Chain</h2>
+              <span class="section-tag">PASO 02 · COBRAR LA MESA</span>
+              <h2>Links individuales por persona</h2>
             </div>
             <button id="btn-verify-onchain" class="btn btn-secondary btn-sm">
-              VERIFICAR LEDGER
+              Revisar quién ya pagó
             </button>
           </div>
 
           <div id="split-results-empty" class="empty-state">
-            <div class="empty-code">ESTADO: SIN ORDEN ACTIVA</div>
+            <div class="empty-title">Mesa vacía por ahora</div>
             <p>
-              Conecta tu wallet en la barra superior y emite la orden para generar los enlaces
-              individuales y monitorear los pagos entrantes en Horizon.
+              Conectá tu billetera arriba y dale a
+              <strong>"Sacar Tiquetes y Links de Cobro"</strong> para generar el link de WhatsApp
+              de cada amigo.
             </p>
           </div>
 
           <div id="split-results-content" class="hidden">
             <div class="split-summary-box">
               <div class="summary-cell">
-                <span class="summary-label">CONCEPTO</span>
+                <span class="summary-label">Plan / Salida</span>
                 <strong id="summary-bill-title">-</strong>
               </div>
               <div class="summary-cell">
-                <span class="summary-label">CUENTA RECEPTORA</span>
+                <span class="summary-label">Recibe la plata</span>
                 <code id="summary-host-wallet">G...</code>
               </div>
               <div class="summary-cell">
-                <span class="summary-label">CUOTA INDIVIDUAL</span>
+                <span class="summary-label">Toca poner</span>
                 <strong id="summary-share-amount" class="highlight-xlm font-num">0.00 XLM</strong>
               </div>
             </div>
@@ -231,62 +211,64 @@
         </div>
       </section>
 
-      <!-- VISTA 2: PAGADOR (LIQUIDAR ORDEN POR LINK) -->
+      <!-- VISTA 2: TIQUETE DEL COMPA (CELULAR / LINK DE PAGO) -->
       <section id="view-payer" class="payer-container hidden">
-        <div class="card payer-card">
-          <div class="payer-top">
-            <span class="payer-badge">ORDEN DE PAGO STELLAR · SEP-0007</span>
-            <h2 id="payer-greeting">Liquidación de Cuenta Compartida</h2>
+        <div class="receipt-ticket">
+          <div class="ticket-notch ticket-notch-left"></div>
+          <div class="ticket-notch ticket-notch-right"></div>
+
+          <div class="ticket-top">
+            <span class="payer-badge">TIQUETE DE COBRO</span>
+            <h2 id="payer-greeting">Te toca poner tu parte</h2>
             <p class="payer-subtitle">
-              Verifica los parámetros de la transacción y autoriza el envío directo en la red
-              Stellar Testnet.
+              Revisá tu parte de la cuenta y tocá el botón rojo para cancelarla al instante.
             </p>
           </div>
 
           <div class="invoice-box">
             <div class="invoice-row">
-              <span>CONCEPTO</span>
+              <span>SALIDA / PLAN</span>
               <strong id="payer-bill-title">Pizza & Birras con el Squad</strong>
             </div>
             <div class="invoice-row">
-              <span>PARTICIPANTE</span>
+              <span>A NOMBRE DE</span>
               <strong id="payer-friend-name">Kevin</strong>
             </div>
             <div class="invoice-row">
-              <span>DESTINO (HOST WALLET)</span>
+              <span>LE CAE A (BILLETERA)</span>
               <code id="payer-destination">G...</code>
             </div>
             <div class="invoice-row">
-              <span>MEMO ON-CHAIN</span>
+              <span>CÓDIGO DE MESA</span>
               <code id="payer-memo">SPLIT:101:Kevin</code>
             </div>
             <div class="invoice-divider"></div>
             <div class="invoice-row invoice-total">
-              <span>MONTO A LIQUIDAR</span>
+              <span>TU PARTE</span>
               <strong id="payer-amount-display" class="font-num">25.00 XLM</strong>
             </div>
           </div>
 
           <div class="payer-actions">
             <button id="btn-execute-split-payment" class="btn btn-primary btn-lg btn-block">
-              FIRMAR Y ENVIAR PAGO EN STELLAR
+              Pagar mi parte ahora
             </button>
             <a
               id="btn-sep7-wallet-uri"
               href="#"
               class="btn btn-secondary btn-block"
-              title="Abrir URI estándar SEP-0007 web+stellar:pay"
+              title="Abrir en app de billetera móvil compatible con Stellar"
             >
-              ABRIR EN WALLET EXTERNA (SEP-0007 URI)
+              Abrir en App de Billetera Móvil
             </a>
           </div>
 
           <div id="payment-receipt-box" class="receipt-box hidden">
-            <div class="receipt-header">TRANSACCIÓN CONFIRMADA EN EL LEDGER</div>
-            <p>El pago fue liquidado con éxito y registrado con el Memo de la orden.</p>
+            <div class="receipt-header">¡LISTO! CUENTA CANCELADA</div>
+            <p>Tu pago ya cayó y tu parte quedó marcada como pagada en la mesa.</p>
             <div class="receipt-details">
               <div class="receipt-hash-row">
-                <span>TX HASH:</span>
+                <span>COMPROBANTE:</span>
                 <code id="receipt-tx-hash">-</code>
               </div>
               <a
@@ -294,9 +276,9 @@
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="btn btn-crimson-outline btn-sm"
+                class="btn btn-red-outline btn-sm"
               >
-                INSPECCIONAR EN STELLAR.EXPERT ↗
+                Ver comprobante oficial ↗
               </a>
             </div>
           </div>
@@ -306,8 +288,8 @@
 
     <footer class="footer">
       <div class="footer-inner">
-        <span><strong>SPLIT/XLM</strong> · Desarrollado por Johann Fonseca</span>
-        <span>Pura Vida Bootcamp (Campamento 01 · Grantfox) · Stellar Raven MCP</span>
+        <span><strong>La Cuenta.</strong> · Creado por Johann Fonseca</span>
+        <span>Impulsado por Stellar Network & Stellar Raven</span>
       </div>
     </footer>
 

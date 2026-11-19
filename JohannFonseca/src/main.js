@@ -186,35 +186,45 @@ async function renderGeneratedLinks(onchainTxs = []) {
     card.className = "friend-link-card";
 
     const statusBadge = matchedTx
-      ? `<span class="badge-status badge-paid">LIQUIDADO ON-CHAIN</span>`
-      : `<span class="badge-status badge-pending">PENDIENTE · ${split.shareAmount.toFixed(
+      ? `<span class="badge-status badge-paid">PAGADO</span>`
+      : `<span class="badge-status badge-pending">DEBE ${split.shareAmount.toFixed(
           2
         )} XLM</span>`;
 
     const txExplorerButton = matchedTx
-      ? `<a href="${matchedTx.explorerUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-crimson-outline btn-xs">STELLAR.EXPERT ↗</a>`
+      ? `<a href="${matchedTx.explorerUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-red-outline btn-xs">Ver Recibo ↗</a>`
       : "";
+
+    const waMessage = `¡Mae ${entry.friendName}! Te toca poner ${split.shareAmount.toFixed(
+      2
+    )} XLM de "${split.billTitle}". Tocá este link para pagar tu parte en un toque: ${
+      entry.magicLink
+    }`;
+    const waUrl = `https://wa.me/?text=${encodeURIComponent(waMessage)}`;
 
     card.innerHTML = `
       <div class="friend-link-header">
         <div>
           <span class="friend-name-title">${entry.friendName}</span>
-          <small style="display:block; color: var(--text-muted); font-size: 0.72rem; margin-top: 2px;">
-            MEMO: <code>${entry.memoTag}</code>
+          <small style="display:block; color: var(--text-dim); font-size: 0.74rem; margin-top: 2px;">
+            Tiquete: <code>${entry.memoTag}</code>
           </small>
         </div>
         ${statusBadge}
       </div>
       <div class="friend-link-actions">
+        <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-xs">
+          Mandar por WhatsApp
+        </a>
         <button type="button" class="btn btn-secondary btn-xs" data-copy-link="${encodeURIComponent(
           entry.magicLink
         )}">
-          COPIAR LINK
+          Copiar Link
         </button>
-        <button type="button" class="btn btn-primary btn-xs" data-simulate-friend="${encodeURIComponent(
+        <button type="button" class="btn btn-secondary btn-xs" data-simulate-friend="${encodeURIComponent(
           entry.magicLink
         )}">
-          ABRIR ORDEN (${entry.friendName.toUpperCase()})
+          Ver Tiquete de ${entry.friendName}
         </button>
         ${txExplorerButton}
       </div>
@@ -531,7 +541,7 @@ el.btnExecuteSplitPayment.addEventListener("click", async () => {
   } finally {
     el.btnExecuteSplitPayment.disabled = false;
     el.btnExecuteSplitPayment.textContent =
-      "FIRMAR Y ENVIAR PAGO EN STELLAR";
+      "Pagar mi parte ahora";
   }
 });
 
