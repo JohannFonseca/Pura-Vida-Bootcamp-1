@@ -109,7 +109,7 @@ async function refreshWalletStatus() {
   el.walletDisconnected.classList.add("hidden");
   el.walletConnected.classList.remove("hidden");
   el.walletModeLabel.textContent =
-    state.walletMode === "freighter" ? "Freighter" : "Testnet Instant";
+    state.walletMode === "freighter" ? "FREIGHTER" : "TESTNET NODE";
   el.walletAddressShort.textContent = shortenAddress(state.walletAddress);
 
   try {
@@ -118,7 +118,7 @@ async function refreshWalletStatus() {
     state.xlmBalance = accountInfo.xlmBalance;
     el.walletBalance.textContent = accountInfo.funded
       ? `${accountInfo.xlmBalance} XLM`
-      : "Sin fondear (0 XLM)";
+      : "UNFUNDED (0 XLM)";
   } catch (err) {
     showStatus(`Error consultando Horizon Testnet: ${err.message}`, "error");
   }
@@ -130,7 +130,7 @@ function renderFriendsTags() {
     const tag = document.createElement("span");
     tag.className = "friend-tag";
     tag.innerHTML = `
-      <span>👤 ${friend}</span>
+      <span>${friend}</span>
       <button type="button" data-remove-index="${index}" title="Quitar">×</button>
     `;
     el.friendsTagsList.appendChild(tag);
@@ -186,21 +186,21 @@ async function renderGeneratedLinks(onchainTxs = []) {
     card.className = "friend-link-card";
 
     const statusBadge = matchedTx
-      ? `<span class="badge-status badge-paid">✅ PAGADO ON-CHAIN</span>`
-      : `<span class="badge-status badge-pending">⏳ PENDIENTE (${split.shareAmount.toFixed(
+      ? `<span class="badge-status badge-paid">LIQUIDADO ON-CHAIN</span>`
+      : `<span class="badge-status badge-pending">PENDIENTE · ${split.shareAmount.toFixed(
           2
-        )} XLM)</span>`;
+        )} XLM</span>`;
 
     const txExplorerButton = matchedTx
-      ? `<a href="${matchedTx.explorerUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-xs">🔍 Ver Recibo en Stellar.expert ↗</a>`
+      ? `<a href="${matchedTx.explorerUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-crimson-outline btn-xs">STELLAR.EXPERT ↗</a>`
       : "";
 
     card.innerHTML = `
       <div class="friend-link-header">
         <div>
-          <span class="friend-name-title">👤 ${entry.friendName}</span>
-          <small style="display:block; color: var(--text-muted); font-size: 0.76rem;">
-            Memo: <code>${entry.memoTag}</code>
+          <span class="friend-name-title">${entry.friendName}</span>
+          <small style="display:block; color: var(--text-muted); font-size: 0.72rem; margin-top: 2px;">
+            MEMO: <code>${entry.memoTag}</code>
           </small>
         </div>
         ${statusBadge}
@@ -209,12 +209,12 @@ async function renderGeneratedLinks(onchainTxs = []) {
         <button type="button" class="btn btn-secondary btn-xs" data-copy-link="${encodeURIComponent(
           entry.magicLink
         )}">
-          📋 Copiar Link para ${entry.friendName}
+          COPIAR LINK
         </button>
         <button type="button" class="btn btn-primary btn-xs" data-simulate-friend="${encodeURIComponent(
           entry.magicLink
         )}">
-          💸 Abrir Link como ${entry.friendName}
+          ABRIR ORDEN (${entry.friendName.toUpperCase()})
         </button>
         ${txExplorerButton}
       </div>
@@ -531,7 +531,7 @@ el.btnExecuteSplitPayment.addEventListener("click", async () => {
   } finally {
     el.btnExecuteSplitPayment.disabled = false;
     el.btnExecuteSplitPayment.textContent =
-      "🚀 Firmar y Pagar Ahora en Stellar Testnet";
+      "FIRMAR Y ENVIAR PAGO EN STELLAR";
   }
 });
 
